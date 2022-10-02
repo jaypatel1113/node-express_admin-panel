@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
+const port = process.env.PORT || 8000;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,5 +36,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   // res.render('error');
 });
+
+app.listen(port, () => {
+  console.log(`listening to the port no at ${port}`);
+})
 
 module.exports = app;
